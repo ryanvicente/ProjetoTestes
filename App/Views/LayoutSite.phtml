@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="CSS/LayoutCss.css" rel="stylesheet">
+        <title>Projeto Moda Radical</title>
+    </head>
+    <body class="bg-fundo">
+        <!-- inicio da navbar-->
+        <nav class="navbar navbar-expand-lg bg-nav">
+            <div class="container">
+                <!-- Imagem de logo-->
+                <a class="navbar-brand" href="/">
+                    <img class="zoom"src="../Img/NavSite/Logo.png" width="50" height="50">
+                </a>
+                <!-- Campo de busca da navbar-->
+                <form class="d-flex">
+                    <div class="input-group text-center">
+                        <div class="form-outline" id="barra-pesquisa">
+                            <input type="search" id="buscasite" placeholder="Busca" class="form-control"/>
+                        </div>
+                        <button type="submit" class="btn btn-dark">
+                            <i class="bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+                <!-- imagens de compra, usuario e favoritos-->
+                <a class="nav-link float-end" href="#" >
+                    <img class="filter-cinza" id="carrinho-compra" src="../Img/NavSite/shopping-cart.svg">
+                </a>
+                <a class="nav-link float-end" href="#">
+                    <img class="filter-cinza" id="Favorito" src="../Img/NavSite/Coracao.svg">
+                </a>
+                <?php
+                    if(session_status() != 2)
+                    {
+                        session_start();
+                    }
+                    if(isset($_SESSION['usuario']) && !empty($_SESSION['usuario']))
+                    {
+                        echo("<a class=\"nav-link float-end\" href=\"/minhaconta\">
+                        <img class=\"filter-cinza\" id=\"perfil-usuario\"  src=\"../Img/NavSite/profile-user.svg\">
+                        </a>");
+                    }
+                    else
+                    {
+                        echo("<a class=\"nav-link float-end\" href=\"/login\">
+                        <img class=\"filter-cinza\" id=\"perfil-usuario\"  src=\"../Img/NavSite/profile-user.svg\">
+                        </a>");
+                    }
+                ?>
+            </div>
+        </nav>
+
+
+        
+        <?php
+            //<--mensagem de alerta-->
+            if(session_status() != 2)
+            {
+                session_start();
+            }
+            if(isset($_SESSION['msgerro']) && !empty($_SESSION['msgerro']))
+            {
+                foreach ($_SESSION['msgerro'] as $key)
+                {
+                    echo($key);
+                }
+                unset($_SESSION['msgerro']);
+            }
+            if(isset($_SESSION['msgsuccess']) && !empty($_SESSION['msgsuccess']))
+            {
+                foreach ($_SESSION['msgsuccess'] as $key)
+                {
+                    echo($key);
+                }
+                unset($_SESSION['msgsuccess']);
+            }
+        ?>        
+        
+
+        
+        <div class="container mt-2">
+
+            <?= $this->content(); ?>
+
+        </div>
+        <footer class="bg-dark text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <a href="#">Sobre</a>
+                        <div class="row">
+                            <a href="#">Política de Privacidade</a>
+                            <a href="#">Quem Somos</a>
+                            <a href="#">Termos de Uso</a>
+                            <a href="#">Entrega</a>
+                        </div>
+                    </div>
+                    <div class= "col">
+                        <a href="#">Contato</a>
+                        <div class="row">
+                            <a href="#">Trocas e devoluções</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-black">
+                <p class="text-muted">2021 -  <?= date("Y");?> - &copy; Proibida a reprodução sem autorização Projeto Moda Radical</p>
+            </div>
+        </footer>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</html>

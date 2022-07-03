@@ -1,0 +1,85 @@
+.bg-fundo{
+    background-color: #f4f1eb;
+}
+.bg-nav{
+    background-color: #e9e4d8;
+}
+.nav-config{
+    max-width: 100%;
+    max-height: 163px;
+}
+
+.filter-cinza{
+    filter: invert(16%) sepia(0%) saturate(4198%) hue-rotate(106deg) brightness(103%) contrast(97%);
+}
+.center-img{
+    vertical-align: middle;
+}
+.arredondar-imagem{
+    border-radius: 50%;
+}
+.make-square{
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+}
+.make-retangle{
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+}
+.rot-180{
+    transform: rotate(180deg);
+}
+.sep-dir{
+    transform: translateX(-50%);
+    
+}
+.sep-esq{
+    transform: translateX(50%);
+}
+.zoom{
+    transition: transform .2s;
+}
+.zoom:hover{
+    transform: scale(1.1);
+}
+#carrinho-compra,#perfil-usuario,#Favorito{
+    width: 40px;
+    height: 40px;
+}
+
+#barra-pesquisa{
+    min-width: 250px;
+    max-width: 500px;
+    min-height: 10px;
+    max-height: 10px;
+
+}
+#carrossel{
+    min-height: 260px;
+    max-height: 260px;
+}
+.dadosconta{
+    border-radius: 8px;
+    border: 1px solid rgb(16,19,11);
+    padding-left: 15px;
+    padding-top: 5px;
+}
+.linha{
+    border-bottom: 1px solid rgb(16,19,11);
+}
+.espacamentodados{
+    padding-top: 10px;
+}
+.text-right{
+    float: right;
+}
+a{
+    text-decoration: none;
+    color: rgb(16,19,11);
+}
+a:hover{
+    text-decoration: none;
+    color: rgb(151, 141, 113);
+}

@@ -1,0 +1,15 @@
+<?php
+    //Pegando as informações do usuario logado.
+    $usuario = $_SESSION['usuario'];
+?>
+<form method="post" action="/editado">
+    <label for="email">Digite o seu novo email</label><br>
+    <input type="text" name="email_Usuario" id="email" value="" placeholder="Email"><br>
+    <label for="nome">Digite o seu nome</label><br>
+    <input type="text" name="nome_Usuario" id="nome" value="" placeholder="Nome"><br>
+    <label for="senha">Digite a sua nova senha</label><br>
+    <input type="password" name="senha_Usuario" value="" id="senha" placeholder="Senha"><br>
+    <input type="hidden" name="id_Usuario" value="<?=$usuario['id_Usuario']?>">
+    <input type="submit">
+</form>
+

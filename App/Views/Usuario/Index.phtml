@@ -1,0 +1,54 @@
+
+<!-- var_dump($_SESSION['usuario']); <a href="/logout"><button type="button" class="btn btn-dark">LogOut</button></a> -->
+<?php
+$usuario = $_SESSION['usuario'];
+?>
+<div class="container" id="separador">
+    <div class="row justify-content-center">
+        <div class="col-3 sep-esq">
+            <div class="rot-180">
+                <img src="Img\Separadores\folha_de_loro.svg">
+            </div>
+        </div>
+        <div class="col-4">
+            <h2 class="text-center fs-2 fw-bold my-2 ">Minha Conta</h2>
+        </div>
+            <div class="col-3 sep-dir">
+                <img src="Img\Separadores\folha_de_loro.svg">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- meio termo -->
+<div class="container dadosconta">
+    <a href="/editarinformacao"><p class="text-right"> Editar </p></a>
+    <div class="linha">            
+        <p>Dados Pessoais</p>
+    </div>
+    <div class="espacamentodados">
+        <p>Nome: <?= ucfirst($usuario['nome_Usuario'])?></p>
+        <p>Email: <?= $usuario['email_Usuario']?></p>
+        <p>Endereço: </p>
+    </div>
+</div>
+
+<div class="container" id="separador">
+    <div class="row justify-content-center">
+        <div class="col-3 sep-esq">
+            <div class="rot-180">
+                <img src="Img\Separadores\folha_de_loro.svg">
+            </div>
+        </div>
+        <div class="col-4">
+            <h2 class="text-center fs-2 fw-bold my-2 ">Meus Pedidos</h2>
+        </div>
+            <div class="col-3 sep-dir">
+                <img src="Img\Separadores\folha_de_loro.svg">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

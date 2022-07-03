@@ -1,0 +1,24 @@
+<?php
+    //voltando os dados para o formulario e retirando informação desnecessaria
+    if(isset($_SESSION['usuarioerror']) && !empty($_SESSION['usuarioerror']))
+    {
+        $usuario = $_SESSION['usuarioerror'];
+        unset($_SESSION['usuarioerror']);
+        array_splice($usuario, 2, 1);
+    }
+    else
+    {
+        $usuario = null;
+    }
+?>
+<form method="post" action="/cadastrado">
+    <label for="email">Digite o seu email</label><br>
+    <input type="text" name="email_Usuario" id="email" value="<?= (!empty($usuario) ? $usuario['email_Usuario'] : "");?>" placeholder="Email"><br>
+    <label for="nome">Digite o seu nome</label><br>
+    <input type="text" name="nome_Usuario" id="nome" value="<?= (!empty($usuario) ? $usuario['nome_Usuario'] : "")?>" placeholder="Nome"><br>
+    <label for="senha">Digite a sua senha</label><br>
+    <input type="password" name="senha_Usuario" id="senha" placeholder="Senha"><br>
+    <input type="submit">
+    <a href="/login"><button type="button" class="btn btn-dark">Logar</button></a>
+</form>
+

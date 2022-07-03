@@ -1,0 +1,19 @@
+<h1>teste de index do Produto</h1>
+
+<hr/>
+
+<p>
+    <?php
+    if($this->dados != null)
+    {
+        foreach ($this->dados as $valor)
+        {
+            echo "<p>$valor->preco_Camisa</p>";
+        }
+    }
+    else
+    {
+        echo "<p>Desculpe, mas não existe essa camisa em nosso estoque</p>";
+    }
+?>
+</p>
