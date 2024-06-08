@@ -5,16 +5,17 @@
 
     class Conn
     {
-        private $host = "127.0.0.1";
-        private $user = "root";
-        private $pass = null;
-        private $dbname = "projetotestes";
-        protected $pdo = false;
+        private string $host = '127.0.0.1';
+        private string $user = 'root';
+        private string $pass = '637554928957';
+        private string $dbname = 'trabbd';
+        protected PDO $pdo;
         
         public function conectar()
         {
             try
             {
+                //$mysqli = new mysqli($host,$user,$pass,$dbname);
                 $this->pdo = new PDO("mysql:host=$this->host; dbname=$this->dbname", $this->user, $this->pass);
                 //report erros do tipo Exception
                 $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -23,7 +24,8 @@
             }
             catch(PDOException $e)
             {
-                echo("Erro: ".$e->get_Message());
+                echo("Erro: ".$e->getMessage());
+                //throw new PDOException($e);
             }
             return $this->pdo;
         }

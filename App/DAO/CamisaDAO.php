@@ -16,9 +16,12 @@
             //chama a funcao conectar toda vez que a  classe é chamada;
             $this->pdo = Conn::conectar();
             
-            if(session_status() != 2)
+            if(!isset($_SESSION))
             {
                 session_start();
+                $_SESSION['msgerro'] = array();
+                $_SESSION['msgsuccess'] = array();
+                $_SESSION['usuario'] = array();
             }
         }
 

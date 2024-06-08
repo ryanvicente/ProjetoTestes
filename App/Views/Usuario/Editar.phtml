@@ -1,6 +1,26 @@
 <?php
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
     //Pegando as informações do usuario logado.
-    $usuario = $_SESSION['usuario'];
+   if(isset($_GET['id']))
+    {
+        if(in_array($_GET['id'],$_SESSION['usuario']))
+        {
+            $usuario = $_SESSION['usuario'];
+        } 
+        else
+        {
+            $usuario = $_SESSION['usuario_edt'];
+        }
+    }
+    else
+    {
+        $usuario = $_SESSION['usuario'];
+    }
+    var_dump($_SESSION['usuario_edt']);
+    //$usuario = $_SESSION['usuario'];
 ?>
 <form method="post" action="/editado">
     <label for="email">Digite o seu novo email</label><br>
@@ -10,6 +30,7 @@
     <label for="senha">Digite a sua nova senha</label><br>
     <input type="password" name="senha_Usuario" value="" id="senha" placeholder="Senha"><br>
     <input type="hidden" name="id_Usuario" value="<?=$usuario['id_Usuario']?>">
+    <input type="hidden" name="id_Cargo" value="<?=$usuario['id_cargo']?>">
     <input type="submit">
 </form>
 

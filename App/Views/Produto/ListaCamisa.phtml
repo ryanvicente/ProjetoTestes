@@ -1,0 +1,56 @@
+<?php
+    if(!isset($_SESSION))
+    {
+        session_start();
+    } 
+	var_dump($_SESSION['estampas']);
+?>
+<main class="container">
+<?php
+	if(isset($_SESSION['estampas'])){
+		echo("
+            <!--Inserindo os cards na pagina principal-->
+            <!-- Primeiro card-->
+            <div class=\"card\" style=\"width: 18rem;\">
+                <img src=\"/Img/Camisas/camisateste.jpg\" class=\"card-img-top\" alt=\"Imagem da estampa\">
+                <div class=\"card-body\">
+                    <h2 class=\"card-title\">Crie a sua própria estampa e camisa</h2>
+                    <p class=\"card-text\">Você será levado para uma pagina para estilizar do 0</p>
+                    <a asp-action=\"Cadastro\" class=\"btn btn-primary\">Usar</a>
+                </div>
+            </div>
+			");
+            foreach($_SESSION['estampas'] as $key=>$value)
+            {
+                //<!--Verificando se pode publicar no site-->
+                if($value['publicar'] == 1){
+					echo("
+                    <div class=\"card\" style=\"width: 18rem;\">
+                        
+                        //<!--Mudar depois de fazer as coisas-->
+
+                        
+                        <img src=\"".$value['id_estampa']."\" class=\"card-img-top\" alt=\"Imagem da estampa\">
+
+
+                        <div class=\"card-body\">
+                            <h2 class=\"card-title\">".$value['nome_estampa']."</h2>
+                            <p class=\"card-text\">".$value['descricao_estampa']."</p>
+                            <a asp-action=\"Cadastro\" asp-route-id=\"".$value['id_estampa']."\" class=\"btn btn-primary\">Alterar</a>
+                            <a asp-action=\"Excluir\" asp-route-id=\"".$value['id_estampa']."\" class=\"btn btn-danger\">Excluir</a>
+                        </div>
+                    </div> 
+					");
+                }
+            }
+        }
+        else
+        {
+			echo(
+        	"<p>Sem Estampas no Site</p>
+            <a asp-action=\"Cadastro\" class=\"btn btn-primary\">Cadastrar nova estampa</a>"
+			);
+        }
+		?>
+</main>
+

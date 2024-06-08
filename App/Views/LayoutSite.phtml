@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link href="CSS/LayoutCss.css" rel="stylesheet">
         <title>Projeto Moda Radical</title>
     </head>
@@ -36,11 +37,16 @@
                     <img class="filter-cinza" id="Favorito" src="../Img/NavSite/Coracao.svg">
                 </a>
                 <?php
-                    if(session_status() != 2)
+                    if(!isset($_SESSION))
                     {
                         session_start();
+                        $_SESSION['msgerro'] = array();
+                        $_SESSION['msgsuccess'] = array();
+                        $_SESSION['usuario'] = array();
+                        $_SESSION['usuario_edt'] = array();
+                        $_SESSION['estampas'] = array();
                     }
-                    if(isset($_SESSION['usuario']) && !empty($_SESSION['usuario']))
+                    if(isset($_SESSION['usuario']) && (!empty($_SESSION['usuario'])))
                     {
                         echo("<a class=\"nav-link float-end\" href=\"/minhaconta\">
                         <img class=\"filter-cinza\" id=\"perfil-usuario\"  src=\"../Img/NavSite/profile-user.svg\">
@@ -60,19 +66,9 @@
         
         <?php
             //<--mensagem de alerta-->
-            if(session_status() != 2)
-            {
-                session_start();
-            }
-            if(isset($_SESSION['msgerro']) && !empty($_SESSION['msgerro']))
-            {
-                foreach ($_SESSION['msgerro'] as $key)
-                {
-                    echo($key);
-                }
-                unset($_SESSION['msgerro']);
-            }
-            if(isset($_SESSION['msgsuccess']) && !empty($_SESSION['msgsuccess']))
+
+            
+            if(isset($_SESSION['msgsuccess']) && (!empty($_SESSION['msgsuccess'])))
             {
                 foreach ($_SESSION['msgsuccess'] as $key)
                 {
@@ -80,7 +76,19 @@
                 }
                 unset($_SESSION['msgsuccess']);
             }
-        ?>        
+            
+
+            if(isset($_SESSION['msgerro']) && (!empty($_SESSION['msgerro'])))
+            {
+                foreach ($_SESSION['msgerro'] as $key)
+                {
+                    echo($key);
+                }
+                unset($_SESSION['msgerro']);
+            }
+
+        ?> 
+              
         
 
         
@@ -89,7 +97,7 @@
             <?= $this->content(); ?>
 
         </div>
-        <footer class="bg-dark text-center">
+        <footer class="bg-dark text-center card-footer">
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -109,8 +117,8 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-black">
-                <p class="text-muted">2021 -  <?= date("Y");?> - &copy; Proibida a reprodução sem autorização Projeto Moda Radical</p>
+            <div class="bg-black card-footer text-body-secondary">
+            <p class="text-muted">2021 -  <?= date("Y");?> - &copy; Proibida a reprodução sem autorização Projeto Moda Radical</p>
             </div>
         </footer>
     </body>

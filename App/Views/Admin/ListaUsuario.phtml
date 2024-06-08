@@ -1,0 +1,52 @@
+<?php
+    if(!isset($_SESSION))
+    {
+        session_start();
+    } 
+	var_dump($_SESSION['usuarios']);
+?>
+<main class="container">
+<table class="table table-striped tabela-usuarios">
+				<tr>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Telefone</th>
+					<th>Nivel</th>
+					<th>Ação</th>
+				</tr>
+				<?php 
+				foreach($_SESSION['usuarios'] as $key=>$value)
+				{
+					print(
+						"<tr>
+						<td>".$value['nome_usuario']."</td>
+						<td>".$value['email_usuario']."</td>
+						<td>ADM</td>
+						<td><a href=\"/editarinformacao?id=".$value['id_Usuario']."\" class=\"btn btn-sm btn-warning\"><i
+                        class=\"bi-pencil\" title=\"Alterar\"></i><a href=\"/editarinformacao?id=".$value['id_Usuario']."\" class=\"btn btn-sm btn-danger\"><i
+                        class=\"bi bi-trash3-fill\" title=\"Deletar\"></i></td>
+						</tr>"
+					);
+				}
+				unset($_SESSION['usuarios']);
+				?>
+				
+				
+				<tr>
+					<td>Matheus de Oliveira</td>
+					<td>Joaodetal2@joaomail.com</td>
+					<td>123456789</td>
+					<td>ADM</td>
+					<td><a href="" value="editar" class="btn btn-sm btn-secondary">Editar<i
+                        class="bi-pencil" title="Alterar"></i></td>
+				</tr>
+				<tr>
+					<td>Paulo Roberto</td>
+					<td>Joaodetal3@joaomail.com</td>
+					<td>123456789</td>
+					<td>ADM</td>
+					<td><input type="submit" value="editar"</td>
+				</tr>
+			</table>
+</main>
+

@@ -46,6 +46,13 @@
 		</main>
     </body>
 </html>-->
+<?php
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
+    var_dump($_SESSION['usuario']);
+?>
 <main class="container">
     <div id="carrossel" class="carousel slide mt-2 mb-3" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -140,7 +147,7 @@
 
     </div>
     
-    <div class="d-inline-flex" id="Camisas">
+    <div class="d-flex justify-content-center" id="Camisas">
         <div>
             <a href="#" class="mx-2"><img class="make-retangle zoom" src="Img\Camisas\caveira.jpg" alt="caviar"></a>
         </div>

@@ -1,7 +1,11 @@
 
-<!-- var_dump($_SESSION['usuario']); <a href="/logout"><button type="button" class="btn btn-dark">LogOut</button></a> -->
+<a href="/logout"><button type="button" class="btn btn-dark">LogOut</button></a>
 <?php
-$usuario = $_SESSION['usuario'];
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
+    $usuario = $_SESSION['usuario'];
 ?>
 <div class="container" id="separador">
     <div class="row justify-content-center">
@@ -29,7 +33,7 @@ $usuario = $_SESSION['usuario'];
     <div class="espacamentodados">
         <p>Nome: <?= ucfirst($usuario['nome_Usuario'])?></p>
         <p>Email: <?= $usuario['email_Usuario']?></p>
-        <p>Endereço: </p>
+        <!--<p>Endereço:<?= $usuario['endereco_Usuario'] != null ? $usuario['endereco_Usuario']:"Endereço não cadastrado"?> </p>-->
     </div>
 </div>
 

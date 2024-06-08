@@ -69,6 +69,18 @@
                 'controller' => 'UsuarioController',
                 'method' => 'editando'
             );
+            $routes['listarusuarios'] = array
+            (
+                'route' => '/listarusuarios',
+                'controller' => 'UsuarioController',
+                'method' => 'Lista_Usuario'
+            );
+            $routes['listarcamisas'] = array
+            (
+                'route' => '/listarcamisas',
+                'controller' => 'ProdutosController',
+                'method' => 'Index'
+            );
 
             //chamando  o metodo no pai
             parent::setRoutes($routes);

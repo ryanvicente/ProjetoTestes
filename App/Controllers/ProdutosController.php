@@ -12,8 +12,7 @@
         {
             //Arrumar para MODEL;
             $camisa = new CamisaModel();
-            $this->render("Produto/Index.phtml","LayoutSite");
-
+            $this->render("Produto/ListaCamisa.phtml","LayoutSite");
         }
 
     }

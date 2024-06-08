@@ -1,8 +1,13 @@
 <?php
     //voltando os dados para o formulario e retirando informação desnecessaria
-    if(isset($_SESSION['usuarioerror']) && !empty($_SESSION['usuarioerror']))
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
+    if(isset($_SESSION['usuarioerror']) && (!empty($_SESSION['usuarioerror'])))
     {
         $usuario = $_SESSION['usuarioerror'];
+        //var_dump($_SESSION['usuarioerror']);
         unset($_SESSION['usuarioerror']);
         array_splice($usuario, 2, 1);
     }

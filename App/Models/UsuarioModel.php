@@ -9,15 +9,18 @@
         protected $nome_Usuario;
         protected $senha_Usuario;
         protected $email_Usuario;
-        public function __construct(){
-            if(session_status() != 2)
+        protected $id_Cargo=null;
+        //protected $id_role; 
+        /*public function __construct(){
+            if(!isset($_SESSION))
             {
                 session_start();
+                $_SESSION['msgerro'] = array();
+                $_SESSION['msgsuccess'] = array();
+                $_SESSION['usuario'] = array();
             }
-            $_SESSION['msgerro'] = array();
-            $_SESSION['msgsuccess'] = array();
-            $_SESSION['usuario'] = array();
-        }
+            
+        }*/
         //criar $_SESSION['msg'] para retornar para o usuario;
         //fazer set's e get's para validação e obtenção dos dados;
         public function setNome($name, $value)
@@ -66,12 +69,17 @@
             {
                 $erro = "<div class=\"alert alert-danger\" role=\"alert\"> Email inválido</div>";
                 //$_SESSION['msg'] = "<div class=\"alert alert-danger\" role=\"alert\"> email inválido</div>";
-                array_push($_SESSION['msgerro'],$erro);
+                //array_push($_SESSION['msgerro'],$erro);
+                $_SESSION['msgerro'] [] = $erro;
             }
             
             
         }
         public function setId($name, $value)
+        {
+            $this->$name = $value;
+        }
+        public function setCargo($name, $value)
         {
             $this->$name = $value;
         }
@@ -90,10 +98,14 @@
         {
             return $this->email_Usuario;
         }
-/*        public function getId()
+        public function getId()
         {
             return $this->id_Usuario;
-        }*/
+        }
+        public function getCargo()
+        {
+            return $this->id_Cargo;
+        }
         //conexão com o DAO
         public function save()
         {
@@ -112,5 +124,15 @@
         {
             $dao = new UsuarioDAO();
             $dao->login($this->email_Usuario, $this->senha_Usuario);
+        }
+        public function listar()
+        {
+            $dao = new UsuarioDAO();
+            $dao->Listar_Usuario();
+        }
+        public function Search($id_usuario)
+        {
+            $dao = new UsuarioDAO();
+            $dao ->Procurar_Usuario($id_usuario);
         }
     }

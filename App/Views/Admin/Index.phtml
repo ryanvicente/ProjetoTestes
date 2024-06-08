@@ -1,0 +1,86 @@
+<?php
+  if(!isset($_SESSION))
+  {
+      session_start();
+  }
+  $usuario = $_SESSION['usuario'];
+  var_dump($_SESSION['tst']);
+?>
+<main class="container">
+
+<div class="container" id="separador">
+    <div class="row justify-content-center">
+        <div class="col-3 sep-esq">
+            <div class="rot-180">
+                <img src="Img\Separadores\folha_de_loro.svg">
+            </div>
+        </div>
+        <div class="col-4">
+            <h2 class="text-center fs-2 fw-bold my-2 ">Minha Conta</h2>
+        </div>
+            <div class="col-3 sep-dir">
+                <img src="Img\Separadores\folha_de_loro.svg">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- meio termo -->
+<div class="container dadosconta">
+    <a href="/editarinformacao"><p class="text-right"> Editar </p></a>
+    <div class="linha">            
+        <p>Dados Pessoais</p>
+    </div>
+    <div class="espacamentodados">
+        <p>Nome: <?= ucfirst($usuario['nome_Usuario'])?></p>
+        <p>Email: <?= $usuario['email_Usuario']?></p>
+        <p>Cargo: Administrador(a)</p>
+        <div class="row justify-content-center col-md-6 offset-md-3">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Painel Admin</button> 
+        </div>
+    </div>
+      
+</div>
+
+<!--<div class="container" id="separador">
+    <div class="row justify-content-center">
+        <div class="col-3 sep-esq">
+            <div class="rot-180">
+                <img src="Img\Separadores\folha_de_loro.svg">
+            </div>
+        </div>
+        <div class="col-4">
+            <h2 class="text-center fs-2 fw-bold my-2 ">Meus Pedidos</h2>
+        </div>
+            <div class="col-3 sep-dir">
+                <img src="Img\Separadores\folha_de_loro.svg">
+            </div>
+        </div>
+    </div>
+</div>-->
+
+  <!-- Button trigger modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Olá <?= ucfirst($usuario['nome_Usuario'])?> o que deseja Fazer?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group list-group-horizontal d-flex justify-content-center">
+            <a href="/listarcamisas"><li class="list-group-item">Listar Camisas</li></a>
+            <a href="/listarusuarios"><li class="list-group-item">Listar Usuarios</li></a>
+            <a href="/logout"><li class="list-group-item">Sair</li></a>
+          </ul>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

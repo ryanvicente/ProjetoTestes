@@ -1,4 +1,8 @@
 <?php
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
     //voltando os dados para o formulario e retirando informação desnecessaria
     if(isset($_SESSION['usuarioerror']) && !empty($_SESSION['usuarioerror']))
     {
@@ -10,12 +14,14 @@
     {
         $usuario = null;
     }
+
+    
 ?>
 <form method="post" action="/logando">
     <label for="email">Digite o seu email</label><br>
     <input type="text" name="email_Usuario" id="email" value="<?= (!empty($usuario) ? $usuario['email_Usuario'] : "");?>" placeholder="Email"><br>
     <label for="senha">Digite a sua senha</label><br>
     <input type="password" name="senha_Usuario" id="senha" placeholder="Senha"><br>
-    <input type="submit">
+    <button type="submit">Logar</button>
     <a href="/cadastro"><button type="button" class="btn btn-dark">Cadastrar</button></a>
 </form>

@@ -9,6 +9,7 @@
 
         public function __construct()
         {
+
             $this->initRoutes();
             $this->run($this->getUrl());
         }
